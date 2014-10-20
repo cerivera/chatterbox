@@ -83,15 +83,7 @@ class Messages(webapp2.RequestHandler):
             self.redirect('/')
 
 
-class Clear(webapp2.RequestHandler):
-    def get(self):
-        ndb.delete_multi(
-            Message.query().fetch(keys_only=True)
-        )
-        self.redirect('/')
-
 app = webapp2.WSGIApplication([
     ('/', MainPage),
     ('/chat', Messages),
-    ('/clear', Clear)
 ], debug=True)
