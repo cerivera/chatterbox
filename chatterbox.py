@@ -41,7 +41,7 @@ class MainPage(webapp2.RequestHandler):
 
 def clean_input(val):
     # TODO clean input here.
-
+    val = val.strip()
     return val
 
 
@@ -54,6 +54,7 @@ class Messages(webapp2.RequestHandler):
         error_fields = []
 
         name = clean_input(self.request.get('name'))
+
         message = validator.name(name)
         if message:
             error_messages.append(message)
